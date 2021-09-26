@@ -36,4 +36,4 @@ int main() {
     free(string);
     return 0;
 }
-
+// TODO: позвали дважды malloc, но всего 1 раз free

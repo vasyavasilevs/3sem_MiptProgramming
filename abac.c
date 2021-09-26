@@ -10,30 +10,32 @@
 • abacaba
 • abacabadabacaba
 • ...
-void GenerateString(int n, char* string);
+void GenerateString(int n, char *string);
  */
 
-void GenerateString(int n, char* string) {
+void GenerateString(int n, char *string) {
     int i = 0;
-    char* current;
-    current = malloc(sizeof(char) * (1 << n));
-    for (i = 1; i <= n; i++) {
-        printf("%d) %s\n", i, string);
-        strcpy(current, string);
-        string[strlen(string)] = 'a' + i;
-        strcat(string, current);
+    char *current = NULL;
+    current = (char *) malloc(sizeof(char) * (1 << n));
+    for (i = 0; i < n; i++) {
+	strcpy(current, string); //current становится string
+        string[strlen(string)] = 'a' + i; //в конец string приписывается след. буква алфавита
+        strcat(string, current); //к string в конец приписывается current aka предыдущий string
+	printf("%d) %s\n", i + 1, string); //печатается новый string
     }
+    free(current);
 }
 
 int main() {
     int num_of_iterations = 0;
     printf("Введите количество итераций: ");
     scanf("%d", &num_of_iterations);
-    char* string;
-    string = malloc(sizeof(char) * (1 << num_of_iterations));
-    string[0] = 'a';
-    GenerateString(num_of_iterations, string);
-    free(string);
+    char *str;
+    str = (char *) malloc(sizeof(char) * (1 << num_of_iterations));
+    str[0] = '\0';
+    GenerateString(num_of_iterations, str);
+    free(str);
     return 0;
 }
 // TODO: позвали дважды malloc, но всего 1 раз free
+//можно было в предыдущей версии сдвигать на n + 1, чтобы избежать "double free or corruption (out), Аварийный останов (стек памяти сброшен на диск)", но так вроде правильнее

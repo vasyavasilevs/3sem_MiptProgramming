@@ -1,0 +1,4 @@
+3
+1 echo Hello, Vladislav Andreevich!
+2 pwd
+3 ls -al

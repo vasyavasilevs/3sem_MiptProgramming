@@ -7,6 +7,7 @@
 
 void Split(char *string, char *delimiters, char ***tokens, int *tokensCount);
 
+// TODO: объявляйте константы в одном стиле: MAX_STRING_SIZE, TIMEOUT ...
 #define max_string_size 1000
 #define max_token_size 1000
 #define number_of_tokens 1000
@@ -38,6 +39,8 @@ int main () {
             exit(0);
         }
     }
+    // TODO: идея, как отслеживать timeout хорошая. Для теста передайте на вход несколько задача, которые долго работают, и проверьте, все ли они будут убиты?
+    // Выводите на экран отладочную информацию. Кажется, что в общем случае убиваете не того, кого требуется.
     for (i = 0; i < counter_of_strings; i++) {
         sleep(atoi(tokens[0]) + TIMEOUT);//спит столько, сколько ребенок, + положенный timeout, в течение которого дитя работает
         int result = 0;

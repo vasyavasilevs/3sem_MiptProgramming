@@ -1,4 +1,8 @@
-3
+7
 1 echo Hello, Vladislav Andreevich!
 2 pwd
 3 ls -al
+4 gcc -Wall -o sleep1 sleep1.c
+5 gcc -Wall -o sleep2 sleep2.c
+6 ./sleep1
+7 ./sleep2

@@ -38,6 +38,8 @@ int main(int argc, char *argv[]) {
            exit(-1);
        }
     }
+// i, j - не самые понятные названия в данном случае. 	
+	
     //множим процессы
     if ((pid = fork()) < 0) {
       printf("Can\t fork child\n");
@@ -52,7 +54,8 @@ int main(int argc, char *argv[]) {
         else {
            fd = open(name_2, O_WRONLY); //для второго клиента
        }
-        //записываем в фифо из консоли
+	// можно писать в одну строку вот так: fd = open((atoi(argv[1]) == 1) ? name_1 : name_2, O_WRONLY);
+        // записываем в фифо из консоли 
         while (1) {
 	    printf("Input message: ");
             fgets(input_string, MAX_STRING_SIZE, stdin);
